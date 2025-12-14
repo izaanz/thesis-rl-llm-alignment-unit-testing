@@ -77,6 +77,26 @@ thesis-rl-llm-alignment-unit-testing/
 ├── requirements.txt      # Project dependencies
 └── README.md             # This file
 ```
+## 🤗 Models & Checkpoints
+
+All models trained during this research are open-sourced and available on Hugging Face.
+
+| Model Phase | Hugging Face Repo | Description |
+| :--- | :--- | :--- |
+| **Phase 1: SFT** | [**`izaanz/Thesis_RTX5090_SFT_Merged`**](https://huggingface.co/izaanz/Thesis_RTX5090_SFT_Merged) | Baseline model fine-tuned on KodCode-Light with Structured Chain-of-Thought (SCoT). |
+| **Phase 2: PPO** | [**`izaanz/Thesis_RTX5090_PPO_Merged`**](https://huggingface.co/izaanz/Thesis_RTX5090_PPO_Merged) | Aligned using Online PPO with the Robust Reward Engine (Staircase Reward). |
+| **Phase 3: DPO** | [**`izaanz/DPO_150_Gold`**](https://huggingface.co/izaanz/DPO_150_Gold) | **(Best Performing)** Aligned using Offline DPO on mined "Elite" preference pairs. (Adapter only - merge it with SFT before using) |
+
+You can load them directly in Python:
+
+```python
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model_id = "izaanz/DPO_150_Gold"
+tokenizer = AutoTokenizer.from_pretrained(model_id)
+model = AutoModelForCausalLM.from_pretrained(model_id, device_map="auto")
+```
+
 ## 🚀 Installation & Usage
 ### 1. Setup Environment
 ```bash
