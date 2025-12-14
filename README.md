@@ -119,7 +119,6 @@ DPO achieved near-perfect execution correctness, solving the Zombie Test problem
 
 ### 2. Test Quality (Coverage)
 While SFT plateaus at ~72% coverage (Happy Path bias), DPO effectively saturates branch coverage.
-**Table 8. TestEval Average Line and Branch Coverage**
 
 | Model                 | Avg Line Cov | Avg Branch Cov |
 |-----------------------|--------------|----------------|
