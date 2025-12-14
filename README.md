@@ -146,7 +146,7 @@ The thesis highlights how alignment changes the nature of generated tests. Below
 | **PPO (Reward Hacking)** | 🔴 Flawed | Learns the bug and enforces incorrect behavior to maximize reward. | `# PPO expects 0!`<br>`assert fib(-1) == 0` |
 | **DPO (Robust)** | 🏆 Elite | Detects the bug and enforces correct logic. | `with pytest.raises(ValueError):`<br>&nbsp;&nbsp;`fib(-1)` |
 
-## 💻 Computational EfficiencyD
+## 💻 Computational Efficiency
 DPO proved to be the most efficient alignment strategy, avoiding the memory overhead of PPO.
 | Method | Peak VRAM | Training Time | Sample Efficiency |
 |--------|-----------|---------------|-------------------|
