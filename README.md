@@ -1,1 +1,1 @@
-# rl-llm-alignment-unit-testing
+# thesis-rl-llm-alignment-unit-testing
