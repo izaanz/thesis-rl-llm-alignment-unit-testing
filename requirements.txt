@@ -1,0 +1,21 @@
+# Core Unsloth & Transformers
+unsloth[colab-new] @ git+https://github.com/unslothai/unsloth.git
+transformers>=4.42.3
+# Using trl<0.9.0 as strictly defined in your setup
+trl<0.9.0
+peft
+accelerate
+bitsandbytes
+
+# Data & Logging
+datasets
+pandas
+numpy
+scipy
+wandb
+tabulate
+
+# Execution & Testing
+pytest
+coverage
+pytest-timeout
