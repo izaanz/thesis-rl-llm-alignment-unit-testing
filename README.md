@@ -26,8 +26,7 @@ This project implements a three-phase methodology using **Qwen2.5-Coder-7B-Instr
 
 The training pipeline consists of three distinct phases designed to shift the model from *imitation* (SFT) to *adversarial testing* (RL).
 
-![Training Pipeline](https://via.placeholder.com/800x400?text=Insert+Figure+6+from+Thesis+Here)
-*(See Figure 6 in Thesis PDF: Overview of Research Design)*
+![Training Pipeline](https://github.com/izaanz/thesis-rl-llm-alignment-unit-testing/blob/main/image/pipeline.png)
 
 ### The Robust Reward Engine
 A custom reward function acts as the ground-truth oracle for the RL phases. It assigns a scalar reward ($R \in [0, 1]$) based on a "Staircase" hierarchy:
