@@ -41,6 +41,24 @@ A custom reward function acts as the ground-truth oracle for the RL phases. It a
 | **5. Elite** | 🏆 **Robust** | **100% Pass + High Coverage + Kills Mutants.** | `0.80 - 1.0` |
 
 ---
+The training pipeline transforms the model from a passive code generator into an adversarial tester through three distinct phases.
+
+### Phase 1: Supervised Fine-Tuning (SFT)
+The baseline model is adapted using **Structured Chain-of-Thought (SCoT)** prompting. This forces the model to plan its testing strategy (Sequence -> Branch -> Loop -> Plan) before generating code, reducing the rate of "Zombie Tests" (code that runs but tests nothing).
+
+### Phase 2: PPO with Staircase Reward
+We introduce a **Staircase Reward Function** ($R \in [0, 1]$) to solve the sparse reward problem in code generation. The reward is calculated hierarchically:
+
+* **Level 1 (Syntax):** 0.05 points for valid Python syntax (even if it crashes).
+* **Level 2 (Logic):** +0.05 points if assertions (`assert`, `pytest.raises`) are present.
+* **Level 3 (Correctness):** Up to +0.45 points based on the pass rate against the canonical solution.
+* **Level 4 (Quality):** The final 0.50 points are unlocked *only* if the test suite achieves high **Statement Coverage** and kills injected **Mutants** (synthetic bugs).
+
+### Phase 3: Direct Preference Optimization (DPO)
+We mine the trajectory of the SFT model to create a static dataset of 1,190 preference pairs. A pair $(y_w, y_l)$ is selected only if:
+* **Winner ($y_w$):** Is an "Elite" candidate (100% Pass + >50% Mutation Score).
+* **Loser ($y_l$):** Is a "Weak" candidate (100% Pass but 0% Mutation Score).
+* **Margin:** The reward gap is significant ($R_w - R_l > 0.4$).
 
 ## 📂 Repository Structure
 
@@ -137,4 +155,5 @@ DPO proved to be the most efficient alignment strategy, avoiding the memory over
 | PPO    | 31.1 GB   | 12.0 hrs      | 2.5k generated rollouts |
 | DPO    | 26.9 GB   | 4.2 hrs       | 1.1k mined pairs |
 
-
+## Conclusion
+DPO offers a scalable, efficient alternative to PPO for domain-specific alignment, achieving superior results with 35% less training time and significantly lower memory overhead.
