@@ -6,9 +6,9 @@
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-Transformers-yellow?logo=huggingface&logoColor=white)](https://huggingface.co/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-> **Bachelor Thesis** | **B.Sc. Applied Artificial Intelligence** > **Author:** Izaan Zubair  
-> **Supervisor:** Dr. Nghia Duong-Trung  
-> **Institution:** IU University of Applied Sciences  
+> **Bachelor Thesis** | **B.Sc. Applied Artificial Intelligence** > **Author:** Izaan Zubair
+> ~Redacted text~
+> **Institution:** IU University of Applied Sciences, Germany
 
 ## 📄 Abstract
 This research investigates whether reinforcement learning alignment techniques can overcome the limitations of **Supervised Fine-Tuning (SFT)** for automated unit test generation. Current LLMs often produce "shallow tests"—syntactically valid but functionally weak code that fails to detect edge-case defects (the "Happy Path" bias).
